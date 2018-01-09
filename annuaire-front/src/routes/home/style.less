@@ -1,0 +1,127 @@
+.home {
+	padding: 56px 20px;
+	min-height: 100%;
+	width: 100%;
+	text-align: center;
+	h1{
+		font-size: 2rem;
+	}
+	.loader{
+	  border-radius: 100%;
+	  position: relative;
+	  margin: 0 auto;
+		span{
+		  display: inline-block;
+		  width: 16px;
+		  height: 16px;
+		  border-radius: 100%;
+		  background-color: #aaa;
+		  margin: 35px 5px;
+		  opacity: 0;
+			.mixin-loop (@i) when (@i > 0) {
+				&:nth-child(@{i}) {
+				  animation: opacitychange 1s ease-in-out (0.33s * @i) infinite;
+		    }
+		    .mixin-loop(@i - 1);
+		  }
+			.mixin-loop(3);
+		}
+		@keyframes opacitychange{
+		  0%, 100%{
+		    opacity: 0;
+		  }
+
+		  60%{
+		    opacity: 1;
+		  }
+		}
+	}
+	.message{
+		padding-left: 28px;
+		position: relative;
+		text-align: left;
+		.i{
+			width: 16px;
+			position: absolute;
+			top: 50%;
+			margin-top: -8px;
+			left: 0;
+			display: flex;
+			vertical-align: middle;
+			justify-content: center;
+			align-items: center;
+			background: #e74c3c;
+			display: inline-block;
+			border-radius: 50%;
+			animation: wiggle 1s ease-in-out infinite alternate;
+			&:after{
+				content: "";
+  			display: block;
+				padding-bottom: 100%;
+			}
+
+			@keyframes wiggle {
+				0%{
+					transform: scale(1);
+				}
+				25%{
+					transform: scale(1);
+				}
+				50%{
+					transform: scale(1);
+				}
+				75%{
+					transform: scale(0.8);
+				}
+				100%{
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+	form{
+		padding: 1rem;
+		text-align: left;
+		&.submitForm{
+			input{
+				width: 100%;
+				& + input,
+				& + button{
+					margin-left: 0;
+					width: 100%;
+				}
+			}
+			display: grid;
+		  grid-template-areas: "e e"
+													 "a d"
+													 "f f";
+		 	grid-gap: 1em;
+			@media (max-width: 400px){
+				grid-template-areas: "e" "a" "d" "f";
+			}
+			.lastName{
+				grid-area: a;
+			}
+			.firstName{
+				grid-area: b;
+			}
+			.phone{
+				grid-area: c;
+			}
+			.submit{
+				grid-area: d;
+			}
+			.generate{
+				grid-area: f;
+			}
+			h2{
+				grid-area: e;
+			}
+		}
+		&.searchForm{
+			input{
+				width: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+@buttonBorder:#2980b9;
+@buttonBg:#3498db;
+@buttonColor:#fff;
+
+
+
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: #FAFAFA;
+	font-family: 'Quicksand','Helvetica Neue', arial, sans-serif;
+	font-weight: 400;
+	color: #444;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#app {
+	height: 100%;
+}
+.boxed{
+	box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.container{
+	width: 1024px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+button,.btn{
+	border: 1px solid lighten(@buttonBg,20%);
+	background: @buttonColor;
+	color:@buttonBg;
+	border-radius:3px;
+	padding: 0 1rem;
+	font-size: 0.8rem;
+	font-family: Arial;
+	text-decoration: none;
+	line-height: 2rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	&:hover{
+		background: @buttonBg;
+		color: @buttonColor;
+	}
+	&:disabled{
+		color: #aaa;
+		border-color: #ddd;
+		background: #eee;
+	}
+}
+
+.success{
+
+}
+
+input{
+	line-height: 2rem;
+	border: none;
+	border-bottom:1px solid #e6e6e6;
+	& + input,
+	& + button{
+		margin-left: 0.5rem;
+	}
+}
+
+.fadeIn{
+  animation: fadeIn 0.5s ease forwards;
+	transition: all 0.3s ease;
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+		visibility: visible;
+    transform: translateY(10px);
+  }
+  100%{
+    opacity: 1;
+		visibility: visible;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,70 @@
+.contact{
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-between;
+  visibility: hidden;
+  @iterations: 20;
+  animation-duration: 0.1s;
+  .mixin-loop (@i) when (@i > 0) {
+    &:nth-child(@{i}) {
+      animation-delay: (.1s * @i);
+    }
+    .mixin-loop(@i - 1);
+  }
+
+  .mixin-loop(@iterations);
+  div{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  > div{
+    padding: 15px;
+    text-align: left;
+     &:nth-child(1){
+      width: 70%;
+    }
+     &:nth-child(2){
+      width: 30%;
+    }
+    .fl{
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: white;
+      background: #333;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .name{
+      flex-direction: column;
+      align-items: start;
+      width: calc(~"50% - 64px");
+    }
+    .phone{
+      width: 50%;
+    }
+    &.actions{
+      background: #f3f3f3;
+      div{
+        padding: 0;
+        width: 100%;
+        button,.btn{
+          width: 33%;
+        }
+      }
+    }
+  }
+}
+
+.contact + .contact{
+  border-top:1px solid rgba(0,0,0,0.1);
+}
+
+.contact p {
+  margin: 0;
+}
